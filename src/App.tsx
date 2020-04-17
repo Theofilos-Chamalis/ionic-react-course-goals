@@ -1,5 +1,7 @@
 import React from 'react';
-import { IonApp } from '@ionic/react';
+import { IonApp, IonRouterOutlet } from '@ionic/react';
+import { Route } from 'react-router-dom';
+import { IonReactRouter } from '@ionic/react-router';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -19,10 +21,21 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import Courses from './pages/Courses';
+import CourseGoals from './pages/CourseGoals';
 
 const App: React.FC = () => (
   <IonApp>
-    <h2>This works!</h2>
+    <IonReactRouter>
+      <IonRouterOutlet>
+        <Route path="/" exact>
+          <Courses />
+        </Route>
+        <Route path="/course-goals">
+          <CourseGoals />
+        </Route>
+      </IonRouterOutlet>
+    </IonReactRouter>
   </IonApp>
 );
 
